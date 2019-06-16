@@ -1,13 +1,15 @@
 #include <LiquidCrystal.h>
 
-LiquidCrystal lcd(1, 2, 4, 5, 6, 7);
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 void setup() {
   lcd.begin(16, 2);
   lcd.setCursor(0, 0);
-  lcd.print("Paul retourne");
+  lcd.print("Code correcteur");
   lcd.setCursor(0, 1);
-  lcd.print("taffer stp");
+  lcd.print("d'erreur TIPE");
+  pinMode(6, OUTPUT);
+  digitalWrite(6, HIGH);
 }
 
 void loop() {
