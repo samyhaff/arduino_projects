@@ -1,6 +1,6 @@
 #include <LiquidCrystal.h>
 
-const char *message = "Hello, World!";
+const char *message = "Hi!";
 #define led 6
 #define clk 7
 #define rx_rate 5 // fréquence
@@ -39,13 +39,21 @@ void setup() {
       lcd.setCursor(byte_idx, 0);
       lcd.print(rx_byte);
   }
-  digitalWrite(led, HIGH);
-  digitalWrite(clk, HIGH);
+  digitalWrite(led, LOW);
+  digitalWrite(clk, LOW);
   lcd.setCursor(0, 1);
   lcd.print("        ");
   lcd.noCursor();
+
+  for (int i = 0; i <16; i++) {
+    // envoi des 16 zéros pour le CRC
+    delay(1000 / rx_rate / 2);
+    digitalWrite(clk, HIGH);
+    delay(1000 / rx_rate / 2);
+    digitalWrite(clk, LOW);
+  }
 }
 
 void loop() {
-  
+   
 }
